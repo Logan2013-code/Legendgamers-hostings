@@ -7,9 +7,6 @@ import os
 
 def is_admin():
     async def predicate(interaction: discord.Interaction) -> bool:
-        owner_id = int(os.getenv("OWNER_ID", 0))
-        if owner_id and interaction.user.id == owner_id:
-            return True
         admin_rol_id = int(os.getenv("ADMIN_ROLE_ID", 0))
         if admin_rol_id:
             rol = interaction.guild.get_role(admin_rol_id)
