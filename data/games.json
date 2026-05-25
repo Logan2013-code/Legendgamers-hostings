@@ -1,0 +1,94 @@
+{
+  "games": [
+    {
+      "id": "minecraft",
+      "name": "Minecraft",
+      "emoji": "⛏️",
+      "beschrijving": "Java & Bedrock edition support. Modpacks, plugins, alles mogelijk!",
+      "populair": true,
+      "min_ram": "1GB",
+      "versies": ["Java 1.8 - 1.21", "Bedrock", "PocketMine", "Nukkit"]
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "emoji": "🔫",
+      "beschrijving": "Hoge performance Rust servers met volledige mod ondersteuning.",
+      "populair": true,
+      "min_ram": "4GB",
+      "versies": ["Vanilla", "Modded", "Staging Branch"]
+    },
+    {
+      "id": "ark",
+      "name": "ARK: Survival Evolved",
+      "emoji": "🦕",
+      "beschrijving": "ARK servers met alle DLC's en mod ondersteuning.",
+      "populair": false,
+      "min_ram": "6GB",
+      "versies": ["Vanilla", "Modded", "ASA (ARK Ascended)"]
+    },
+    {
+      "id": "valheim",
+      "name": "Valheim",
+      "emoji": "🪓",
+      "beschrijving": "Viking survival servers, snel opgezet en stabiel.",
+      "populair": true,
+      "min_ram": "2GB",
+      "versies": ["Vanilla", "Modded (BepInEx)"]
+    },
+    {
+      "id": "gmod",
+      "name": "Garry's Mod",
+      "emoji": "🎭",
+      "beschrijving": "GMod servers voor DarkRP, TTT, Prop Hunt en meer.",
+      "populair": false,
+      "min_ram": "2GB",
+      "versies": ["Alle gamemodes", "Workshop support"]
+    },
+    {
+      "id": "csgo",
+      "name": "CS2 / CS:GO",
+      "emoji": "💣",
+      "beschrijving": "Counter-Strike servers, laag latency gegarandeerd.",
+      "populair": true,
+      "min_ram": "2GB",
+      "versies": ["CS2", "CS:GO Legacy", "Competitive", "Community"]
+    },
+    {
+      "id": "terraria",
+      "name": "Terraria",
+      "emoji": "🌳",
+      "beschrijving": "Terraria multiplayer servers, inclusief TModLoader.",
+      "populair": false,
+      "min_ram": "1GB",
+      "versies": ["Vanilla", "TModLoader"]
+    },
+    {
+      "id": "fivem",
+      "name": "FiveM / GTA:V RP",
+      "emoji": "🚗",
+      "beschrijving": "FiveM roleplay servers met ESX, QBCore en meer frameworks.",
+      "populair": true,
+      "min_ram": "4GB",
+      "versies": ["ESX", "QBCore", "VRP", "Custom"]
+    },
+    {
+      "id": "palworld",
+      "name": "Palworld",
+      "emoji": "🐾",
+      "beschrijving": "Palworld dedicated servers, snel en stabiel.",
+      "populair": true,
+      "min_ram": "16GB",
+      "versies": ["Vanilla"]
+    },
+    {
+      "id": "7dtd",
+      "name": "7 Days to Die",
+      "emoji": "🧟",
+      "beschrijving": "Zombie survival servers met mod ondersteuning.",
+      "populair": false,
+      "min_ram": "4GB",
+      "versies": ["Vanilla", "Modded"]
+    }
+  ]
+}

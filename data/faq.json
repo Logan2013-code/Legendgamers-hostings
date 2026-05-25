@@ -1,0 +1,54 @@
+{
+  "vragen": [
+    {
+      "vraag": "Hoe lang duurt het voordat mijn server online is?",
+      "antwoord": "Na betaling wordt jouw server **binnen 60 seconden** automatisch aangemaakt en ben je direct klaar om te spelen!",
+      "categorie": "algemeen"
+    },
+    {
+      "vraag": "Kan ik mijn pakket upgraden of downgraden?",
+      "antwoord": "Ja, je kunt op elk moment je pakket aanpassen via ons klantenportaal. Bij een upgrade betaal je alleen het verschil voor de resterende periode.",
+      "categorie": "facturering"
+    },
+    {
+      "vraag": "Bieden jullie DDoS bescherming aan?",
+      "antwoord": "Absoluut! Alle servers zijn standaard voorzien van **gratis DDoS bescherming** tot 1 Tbps. Je server blijft altijd online.",
+      "categorie": "beveiliging"
+    },
+    {
+      "vraag": "Welke besturingssystemen ondersteunen jullie?",
+      "antwoord": "We ondersteunen Linux (Ubuntu, Debian) en Windows Server. Je kunt dit instellen in het klantenportaal.",
+      "categorie": "technisch"
+    },
+    {
+      "vraag": "Hoe maak ik een backup van mijn server?",
+      "antwoord": "Via het klantenportaal kun je handmatig backups aanmaken of automatische dagelijkse backups instellen. Afhankelijk van je pakket heb je 1 tot onbeperkt backupslots.",
+      "categorie": "technisch"
+    },
+    {
+      "vraag": "Kan ik mods en plugins installeren?",
+      "antwoord": "Ja! Je hebt volledige FTP/SFTP toegang en een gebruiksvriendelijk bestandsbeheer in het klantenportaal. Installeer mods, plugins en modpacks naar wens.",
+      "categorie": "technisch"
+    },
+    {
+      "vraag": "Wat is jullie uptime garantie?",
+      "antwoord": "We garanderen **99.9% uptime**. Bij downtime onder onze SLA kom je in aanmerking voor tegoed.",
+      "categorie": "algemeen"
+    },
+    {
+      "vraag": "Hoe kan ik betalen?",
+      "antwoord": "We accepteren iDEAL, PayPal, creditcard, crypto en bankoverschrijving. Betalingen verlopen via een beveiligde verbinding.",
+      "categorie": "facturering"
+    },
+    {
+      "vraag": "Is er een gratis proefperiode?",
+      "antwoord": "Momenteel bieden we geen gratis proefperiode aan, maar we hebben wel een **7-daagse geld-terug garantie** als je niet tevreden bent.",
+      "categorie": "facturering"
+    },
+    {
+      "vraag": "Kan ik meerdere games op één server draaien?",
+      "antwoord": "Per server draai je één game. Wil je meerdere games hosten? Neem dan contact op voor een multi-server deal met korting!",
+      "categorie": "technisch"
+    }
+  ]
+}
