@@ -1,6 +1,17 @@
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import types
+
+# Inject audioop stub for Python 3.13+ (audioop was removed from stdlib)
+if 'audioop' not in sys.modules:
+    _audioop = types.ModuleType('audioop')
+    _noop = lambda *a, **k: b''
+    for _fn in ['bias','mul','tostereo','tomono','ratecv','lin2lin','ulaw2lin',
+                'lin2ulaw','alaw2lin','lin2alaw','add','reverse','cross','avg',
+                'avgpp','max','maxpp','minmax','rms','findfactor','findfit',
+                'findmax','getsample']:
+        setattr(_audioop, _fn, _noop)
+    sys.modules['audioop'] = _audioop
 
 import discord
 from discord.ext import commands
