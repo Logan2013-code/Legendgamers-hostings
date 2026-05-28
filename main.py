@@ -1,6 +1,20 @@
+import sys
+import os
+import types
+
+# Inject audioop stub for Python 3.13+ (audioop was removed from stdlib)
+if 'audioop' not in sys.modules:
+    _audioop = types.ModuleType('audioop')
+    _noop = lambda *a, **k: b''
+    for _fn in ['bias','mul','tostereo','tomono','ratecv','lin2lin','ulaw2lin',
+                'lin2ulaw','alaw2lin','lin2alaw','add','reverse','cross','avg',
+                'avgpp','max','maxpp','minmax','rms','findfactor','findfit',
+                'findmax','getsample']:
+        setattr(_audioop, _fn, _noop)
+    sys.modules['audioop'] = _audioop
+
 import discord
 from discord.ext import commands
-import os
 import asyncio
 from dotenv import load_dotenv
 
@@ -42,6 +56,18 @@ class LegendBot(commands.Bot):
 
     async def on_command_error(self, ctx, error):
         pass
+
+    async def on_app_command_error(self, interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
+        print(f"❌ Fout in commando: {error}")
+        import traceback
+        traceback.print_exc()
+        try:
+            await interaction.response.send_message(f"❌ Er ging iets mis: `{error}`", ephemeral=True)
+        except Exception:
+            try:
+                await interaction.followup.send(f"❌ Er ging iets mis: `{error}`", ephemeral=True)
+            except Exception:
+                pass
 
 
 async def main():
