@@ -6,9 +6,11 @@ import os
 from datetime import datetime
 
 
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
+
+
 def laad_faq():
-    pad = os.path.join(os.path.dirname(__file__), '..', 'data', 'faq.json')
-    with open(pad, 'r', encoding='utf-8') as f:
+    with open(os.path.join(DATA_DIR, 'faq.json'), 'r', encoding='utf-8') as f:
         return json.load(f)
 
 

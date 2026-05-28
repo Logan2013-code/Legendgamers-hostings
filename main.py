@@ -57,6 +57,18 @@ class LegendBot(commands.Bot):
     async def on_command_error(self, ctx, error):
         pass
 
+    async def on_app_command_error(self, interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
+        print(f"❌ Fout in commando: {error}")
+        import traceback
+        traceback.print_exc()
+        try:
+            await interaction.response.send_message(f"❌ Er ging iets mis: `{error}`", ephemeral=True)
+        except Exception:
+            try:
+                await interaction.followup.send(f"❌ Er ging iets mis: `{error}`", ephemeral=True)
+            except Exception:
+                pass
+
 
 async def main():
     if not TOKEN:

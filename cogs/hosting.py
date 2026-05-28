@@ -5,15 +5,16 @@ import json
 import os
 
 
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
+
+
 def laad_prijzen():
-    pad = os.path.join(os.path.dirname(__file__), '..', 'data', 'prijzen.json')
-    with open(pad, 'r', encoding='utf-8') as f:
+    with open(os.path.join(DATA_DIR, 'prijzen.json'), 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
 def laad_games():
-    pad = os.path.join(os.path.dirname(__file__), '..', 'data', 'games.json')
-    with open(pad, 'r', encoding='utf-8') as f:
+    with open(os.path.join(DATA_DIR, 'games.json'), 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
