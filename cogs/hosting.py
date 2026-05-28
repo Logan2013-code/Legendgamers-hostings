@@ -24,6 +24,7 @@ class HostingCog(commands.Cog):
 
     @app_commands.command(name="prijzen", description="Bekijk alle hosting pakketten en prijzen")
     async def prijzen(self, interaction: discord.Interaction):
+        await interaction.response.defer()
         data = laad_prijzen()
         pakketten = data["pakketten"]
 
@@ -63,17 +64,18 @@ class HostingCog(commands.Cog):
         embed.set_footer(text=f"Betaalmethoden: {betaal}")
         embed.set_thumbnail(url="https://i.imgur.com/wSTFkRM.png")
 
-        await interaction.response.send_message(embed=embed)
+        await interaction.followup.send(embed=embed)
 
     @app_commands.command(name="pakket", description="Bekijk details van een specifiek hosting pakket")
     @app_commands.describe(naam="De naam van het pakket (starter, basic, pro, premium, extreme)")
     async def pakket(self, interaction: discord.Interaction, naam: str):
+        await interaction.response.defer()
         data = laad_prijzen()
         pakket = next((p for p in data["pakketten"] if p["id"] == naam.lower()), None)
 
         if not pakket:
             namen = ", ".join(p["id"] for p in data["pakketten"])
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 f"❌ Pakket `{naam}` niet gevonden. Beschikbaar: `{namen}`",
                 ephemeral=True
             )
@@ -109,10 +111,11 @@ class HostingCog(commands.Cog):
             embed.set_author(name="⭐ MEEST GEKOZEN PAKKET")
 
         embed.set_footer(text="Gebruik /bestellen om dit pakket te bestellen!")
-        await interaction.response.send_message(embed=embed)
+        await interaction.followup.send(embed=embed)
 
     @app_commands.command(name="games", description="Bekijk alle beschikbare games voor hosting")
     async def games(self, interaction: discord.Interaction):
+        await interaction.response.defer()
         data = laad_games()
         games_lijst = data["games"]
 
@@ -144,11 +147,12 @@ class HostingCog(commands.Cog):
         )
         embed.set_footer(text="Gebruik /game <naam> voor meer info over een specifieke game")
 
-        await interaction.response.send_message(embed=embed)
+        await interaction.followup.send(embed=embed)
 
     @app_commands.command(name="game", description="Bekijk details over een specifieke game hosting")
     @app_commands.describe(naam="De naam van de game")
     async def game(self, interaction: discord.Interaction, naam: str):
+        await interaction.response.defer()
         data = laad_games()
         zoek = naam.lower().replace(" ", "")
         gevonden = next(
@@ -158,7 +162,7 @@ class HostingCog(commands.Cog):
 
         if not gevonden:
             namen = ", ".join(g["name"] for g in data["games"])
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 f"❌ Game `{naam}` niet gevonden.\nBeschikbare games: {namen}",
                 ephemeral=True
             )
@@ -176,66 +180,39 @@ class HostingCog(commands.Cog):
             embed.set_author(name="⭐ Populaire keuze!")
 
         embed.set_footer(text="Bekijk /prijzen voor passende pakketten!")
-        await interaction.response.send_message(embed=embed)
+        await interaction.followup.send(embed=embed)
 
     @app_commands.command(name="bestellen", description="Informatie over hoe je een server kunt bestellen")
     async def bestellen(self, interaction: discord.Interaction):
+        await interaction.response.defer()
         embed = discord.Embed(
             title="🛒 Hoe bestel je een server?",
             description="In 3 simpele stappen heb jij jouw server online!",
             color=0x57F287
         )
 
-        embed.add_field(
-            name="Stap 1 — Kies je pakket",
-            value="Gebruik `/prijzen` om alle pakketten te bekijken en kies er één die bij je past.",
-            inline=False
-        )
-        embed.add_field(
-            name="Stap 2 — Open een ticket",
-            value="Gebruik `/ticket` en geef aan welk pakket en welke game je wilt. We helpen je verder!",
-            inline=False
-        )
-        embed.add_field(
-            name="Stap 3 — Betalen & Online!",
-            value="Na betaling is je server **binnen 60 seconden** online. Zo simpel is het!",
-            inline=False
-        )
-
-        embed.add_field(
-            name="💳 Betaalmethoden",
-            value="iDEAL • PayPal • Creditcard • Crypto • Bankoverschrijving",
-            inline=False
-        )
-
-        embed.add_field(
-            name="🛡️ 7-daagse geld-terug garantie",
-            value="Niet tevreden? Geen probleem — we geven je geld terug, geen vragen gesteld.",
-            inline=False
-        )
+        embed.add_field(name="Stap 1 — Kies je pakket", value="Gebruik `/prijzen` om alle pakketten te bekijken en kies er één die bij je past.", inline=False)
+        embed.add_field(name="Stap 2 — Open een ticket", value="Gebruik `/ticket` en geef aan welk pakket en welke game je wilt. We helpen je verder!", inline=False)
+        embed.add_field(name="Stap 3 — Betalen & Online!", value="Na betaling is je server **binnen 60 seconden** online. Zo simpel is het!", inline=False)
+        embed.add_field(name="💳 Betaalmethoden", value="iDEAL • PayPal • Creditcard • Crypto • Bankoverschrijving", inline=False)
+        embed.add_field(name="🛡️ 7-daagse geld-terug garantie", value="Niet tevreden? Geen probleem — we geven je geld terug, geen vragen gesteld.", inline=False)
 
         embed.set_footer(text="Vragen? Gebruik /ticket voor ondersteuning!")
-        await interaction.response.send_message(embed=embed)
+        await interaction.followup.send(embed=embed)
 
     @app_commands.command(name="uptime", description="Bekijk de huidige serverstatus en uptime garantie")
     async def uptime(self, interaction: discord.Interaction):
-        embed = discord.Embed(
-            title="📊 Serverstatus & Uptime",
-            color=0x57F287
-        )
+        await interaction.response.defer()
+        embed = discord.Embed(title="📊 Serverstatus & Uptime", color=0x57F287)
         embed.add_field(name="✅ Netwerk", value="Operationeel", inline=True)
         embed.add_field(name="✅ Panel", value="Operationeel", inline=True)
         embed.add_field(name="✅ Game Servers", value="Operationeel", inline=True)
         embed.add_field(name="✅ Facturering", value="Operationeel", inline=True)
         embed.add_field(name="✅ DDoS Beveiliging", value="Actief", inline=True)
         embed.add_field(name="✅ Backupsysteem", value="Operationeel", inline=True)
-        embed.add_field(
-            name="🏆 Uptime Garantie",
-            value="Wij garanderen **99.9% uptime** voor al onze servers.",
-            inline=False
-        )
+        embed.add_field(name="🏆 Uptime Garantie", value="Wij garanderen **99.9% uptime** voor al onze servers.", inline=False)
         embed.set_footer(text="Status bijgewerkt — LegendGamers Hosting")
-        await interaction.response.send_message(embed=embed)
+        await interaction.followup.send(embed=embed)
 
 
 async def setup(bot):
